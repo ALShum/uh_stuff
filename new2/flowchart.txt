@@ -1,0 +1,17 @@
+Startup screen (1. diag.jpg)
+|
+Login screen (2. login.png)
+|
+Base UI(3. ui_base.png)++++++++++++++++++++++++++++++++++++++++++++++
+|		   		/|\ 		     	  /|\
+Navigation	   		Emergency          	Car Settings
+(4. nav1.png)			(6. emergency.png)	(7. speedometer.png)
+|							  /|\
+|							Max speed(8. set_max_speed.png)
+|
+keyboard(4.1 keyboard.png) or voice(4.2 voice.png)
+|
+confirm(5.confirm_nav.png)				 
+
+
+Other screens are for applications (google music, google now)
