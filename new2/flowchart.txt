@@ -11,7 +11,7 @@ Navigation	   		Emergency          	Car Settings
 |
 keyboard(4.1 keyboard.png) or voice(4.2 voice.png)
 |
-confirm(5.confirm_nav.png)				 
+confirm route password swipe(5.confirm_nav.png)				 
 
 
-Other screens are for applications (google music, google now)
+Other screens are for applications (google music, google now) which respond to the app icons on the botton of base UI.
