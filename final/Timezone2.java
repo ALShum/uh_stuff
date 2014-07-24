@@ -16,8 +16,8 @@ public class Timezone2 {
 	//string to process
 	public Timezone2(String tz) throws IllegalArgumentException {
 		int slashPos = (tz.indexOf("/") < 0) ? tz.length() : tz.indexOf("/");
-		String region = tz.substring(0, slashPos).replaceAll("[^a-zA-Z ]", "").trim().toLowerCase();
-		String subregion = tz.substring(slashPos + 1, tz.length()).replaceAll("[^a-zA-Z ]", "").trim().toLowerCase();
+		String region = tz.substring(0, slashPos).replaceAll("[^a-zA-Z0-9-+]+", "").trim().toLowerCase();
+		String subregion = tz.substring(slashPos + 1, tz.length()).replaceAll("[^a-zA-Z0-9-+]+", "").trim().toLowerCase();
 		
 		List<String> validTZ = Arrays.asList(TimeZone.getAvailableIDs());
 		List<String> validRegions = new ArrayList<String>();
