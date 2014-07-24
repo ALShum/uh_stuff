@@ -32,6 +32,8 @@ public class EventEntry {
         this.dtEnd = dtEnd;
         this.timeZone = timeZone;
     }
+    
+    public EventEntry(){}
 
     /**
  	* Returns the current value of the object that is stored under the requested value in the event.

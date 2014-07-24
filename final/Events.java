@@ -4,6 +4,7 @@ public class Events {
 	
 	public Events() {
 		event = new EventEntry(null, null, null, null, null, null, null, null);
+		event = new EventEntry();
 	}
 
 	/** 
@@ -50,8 +51,8 @@ public class Events {
 	* @return The priority value  
 	*/
 	public String ePriority(String uiPriority){	
-	
-		return null;
+		Priority p = new Priority(uiPriority);
+		return(p.toString());
 	}	
 	
 	/** 
@@ -61,8 +62,7 @@ public class Events {
 	* @return The summary value  
 	*/
 	public String eSummary(String uiSummary){	
-	
-		return null;
+		return(uiSummary);
 	}	
 	
 	/** 
@@ -72,8 +72,8 @@ public class Events {
 	* @return The dtStart value  
 	*/
 	public String eDTStart(String uiDTS){
-	
-		return null;
+		DT start = new DT(uiDTS);
+		return(start.toString());
 	}
 	
 	/** 
@@ -83,8 +83,8 @@ public class Events {
 	* @return The dtEnd value  
 	*/
 	public String eDTEnd(String uiDTE){
-	
-		return null;
+		DT end = new DT(uiDTE);
+		return end.toString();
 	}
 	
 	/** 
@@ -95,8 +95,8 @@ public class Events {
 	* @return The timeZone value  
 	*/
 	public String eTimeZone(String uiTimeZone){
-	
-		return null;
+		Timezone tz = new Timezone(uiTimeZone);
+		return(tz.toString());
 	}
 	
 }
