@@ -18,8 +18,6 @@ public class Events {
 	*/
 	public boolean eVersion(String uiVersion){
 		
-		
-		
 		return false;
 	}
 	
