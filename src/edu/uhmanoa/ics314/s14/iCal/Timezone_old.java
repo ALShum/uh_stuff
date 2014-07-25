@@ -1,3 +1,5 @@
+package edu.uhmanoa.ics314.s14.iCal;
+
 import java.util.Arrays;
 
 //Class that handles all timezones
@@ -7,18 +9,18 @@ import java.util.Arrays;
 //figure out what the donk a "globally unique time zone identifer is: see 3.8.3.1
 //import java.util.TimeZone
 //String[] TZ = TimeZone.getAvailableIDs(); for all valid ones
-public class Timezone {
+public class Timezone_old {
 	String region;
 	String subregion;
 	
 	//default timezone
-	public Timezone() {
+	public Timezone_old() {
 		region = "Pacific";
 		subregion = "Honolulu";
 	}
 	
 	//string to process
-	public Timezone(String tz) throws IllegalArgumentException {
+	public Timezone_old(String tz) throws IllegalArgumentException {
 		tz = tz.toLowerCase().trim();
 		
 		if(tz.contains("/")){

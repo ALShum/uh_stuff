@@ -1,3 +1,5 @@
+package edu.uhmanoa.ics314.s14.iCal;
+
 public class Priority {
 	int priority;
 	

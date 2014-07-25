@@ -1,40 +1,44 @@
+package edu.uhmanoa.ics314.s14.iCal;
+
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
 
 //handles date-time start and date-time end
 //todo: handle other date string formats
-public class DT {
+public class DateTime {
 	SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
 	Calendar date;
 	
 	//sets to 11:59:00 PM of today
-	public DT() {
+	public DateTime() {
 		date = Calendar.getInstance();
 		date.set(date.get(Calendar.YEAR), date.get(Calendar.MONTH), date.get(Calendar.DATE), 23, 59, 0);
 	}
 	
-	public DT(Calendar date) {
+	public DateTime(Calendar date) {
 		this.date = date;
 	}
 	
 	//defaults to noon
-	public DT(int year, int month, int day) {
+	public DateTime(int year, int month, int day) {
 		date.set(year, month, day, 12, 0, 0);
 	}
 	
-	public DT(int year, int month, int day, int hour) {
+	public DateTime(int year, int month, int day, int hour) {
 		date.set(year, month, day, hour, 0, 0);
 	}
 	
-	public DT(int year, int month, int day, int hour, int minute) {
+	public DateTime(int year, int month, int day, int hour, int minute) {
 		date.set(year, month, day, hour, minute, 0);
 	}
 	
-	public DT(int year, int month, int day, int hour, int minute, int second) {
+	public DateTime(int year, int month, int day, int hour, int minute, int second) {
 		date.set(year, month, day, hour, minute, second);
 	}
 	
-	public DT(String t) throws IllegalArgumentException {	
+	//http://stackoverflow.com/questions/3389348/parse-any-date-in-java
+	//todo see if we can borrow code
+	public DateTime(String t) throws IllegalArgumentException {	
 		int year = 0;
 		int month = 0;
 		int day = 0;

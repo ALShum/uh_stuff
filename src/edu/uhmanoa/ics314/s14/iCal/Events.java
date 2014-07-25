@@ -1,3 +1,4 @@
+package edu.uhmanoa.ics314.s14.iCal;
 
 public class Events {
 	public EventEntry event;
@@ -72,7 +73,7 @@ public class Events {
 	* @return The dtStart value  
 	*/
 	public String eDTStart(String uiDTS){
-		DT start = new DT(uiDTS);
+		DateTime start = new DateTime(uiDTS);
 		return(start.toString());
 	}
 	
@@ -83,7 +84,7 @@ public class Events {
 	* @return The dtEnd value  
 	*/
 	public String eDTEnd(String uiDTE){
-		DT end = new DT(uiDTE);
+		DateTime end = new DateTime(uiDTE);
 		return end.toString();
 	}
 	
@@ -95,7 +96,7 @@ public class Events {
 	* @return The timeZone value  
 	*/
 	public String eTimeZone(String uiTimeZone){
-		Timezone tz = new Timezone(uiTimeZone);
+		Timezone_old tz = new Timezone_old(uiTimeZone);
 		return(tz.toString());
 	}
 	

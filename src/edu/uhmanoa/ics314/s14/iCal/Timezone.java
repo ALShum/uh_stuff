@@ -1,23 +1,25 @@
+package edu.uhmanoa.ics314.s14.iCal;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.TimeZone;
 
-public class Timezone2 {
+public class Timezone {
 	String region;
 	String subregion;
 	
 	//default timezone
-	public Timezone2() {
+	public Timezone() {
 		region = "Pacific";
 		subregion = "Honolulu";
 	}
 	
 	//string to process
-	public Timezone2(String tz) throws IllegalArgumentException {
+	public Timezone(String tz) throws IllegalArgumentException {
 		int slashPos = (tz.indexOf("/") < 0) ? tz.length() : tz.indexOf("/");
 		String region = tz.substring(0, slashPos).replaceAll("[^a-zA-Z0-9-+]+", "").trim().toLowerCase();
-		String subregion = tz.substring(slashPos + 1, tz.length()).replaceAll("[^a-zA-Z0-9-+/]+", "").trim().toLowerCase();
+		String subregion =  (tz.indexOf("/") < 0) ? "" : tz.substring(slashPos + 1, tz.length()).replaceAll("[^a-zA-Z0-9-+/_]+", "").trim().toLowerCase();
 		
 		List<String> validTZ = Arrays.asList(TimeZone.getAvailableIDs());
 		List<String> validRegions = new ArrayList<String>();
@@ -48,6 +50,6 @@ public class Timezone2 {
 	
 	@Override
 	public String toString() {
-		return(region + "/" + subregion);
+		return((subregion == "") ? region : region + "/" + subregion);
 	}
 }

@@ -1,3 +1,4 @@
+package edu.uhmanoa.ics314.s14.iCal;
 
 public class EventEntry {
 	
@@ -33,7 +34,16 @@ public class EventEntry {
         this.timeZone = timeZone;
     }
     
-    public EventEntry(){}
+    public EventEntry(){
+    	version = null;
+    	classification = null;
+    	geoPosition = null;
+    	priority = null;
+    	summary = null;
+    	dtStart = null;
+    	dtEnd = null;
+    	timeZone = null;
+    }
 
     /**
  	* Returns the current value of the object that is stored under the requested value in the event.
