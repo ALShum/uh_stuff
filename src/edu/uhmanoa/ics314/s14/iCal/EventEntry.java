@@ -96,44 +96,36 @@ public class EventEntry {
 	* @return  value The previous value stored which has been replaced.  
 	*/
 	
-	public String setVersion(String version) {
+	public void setVersion(String version) {
 		this.version = version;
-		return version;
 	}
 	
-	public String setClassification(String classification) {
+	public void setClassification(String classification) {
 		this.classification = classification;
-		return classification;
 	}
 	
-	public String setGeoPosition(String geoPosition) {
+	public void setGeoPosition(String geoPosition) {
 		this.geoPosition = geoPosition;
-		return geoPosition;
 	}
  	
-	public String setPriority(String priority) {
+	public void setPriority(String priority) {
 		this.priority = priority;
-		return priority;
 	}
 	
-	public String setSummary(String summary) {
+	public void setSummary(String summary) {
 		this.summary = summary;
-		return summary;
 	}
 	
-	public String setDTStart(String dtStart) {
+	public void setDTStart(String dtStart) {
 		this.dtStart = dtStart;
-		return dtStart;
 	}
 	
-	public String setDTEnd(String dtEnd) {
+	public void setDTEnd(String dtEnd) {
 		this.dtEnd = dtEnd;
-		return dtEnd;
 	}
 	
-	public String setTimeZone(String timeZone) {
+	public void setTimeZone(String timeZone) {
 		this.timeZone = timeZone;
-		return timeZone;
 	}
 	
 }

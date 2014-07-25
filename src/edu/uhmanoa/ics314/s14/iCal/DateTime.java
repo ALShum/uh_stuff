@@ -21,18 +21,22 @@ public class DateTime {
 	
 	//defaults to noon
 	public DateTime(int year, int month, int day) {
+		date = Calendar.getInstance();
 		date.set(year, month, day, 12, 0, 0);
 	}
 	
 	public DateTime(int year, int month, int day, int hour) {
+		date = Calendar.getInstance();
 		date.set(year, month, day, hour, 0, 0);
 	}
 	
 	public DateTime(int year, int month, int day, int hour, int minute) {
+		date = Calendar.getInstance();
 		date.set(year, month, day, hour, minute, 0);
 	}
 	
 	public DateTime(int year, int month, int day, int hour, int minute, int second) {
+		date = Calendar.getInstance();
 		date.set(year, month, day, hour, minute, second);
 	}
 	
@@ -50,7 +54,7 @@ public class DateTime {
 		//detects MM/DD/YYYY
 		//Note: cannot distinguish DD/MM/YYYY, we'll force europeans to use MM/DD/YYYY
 		//detects YYYY/MM/DD
-		
+
 		t = t.replaceAll("[^0-9tT]+", "").toLowerCase();
 		if(t.contains("t") && t.length() == 15) { //detects YYYYMMDDTHHmmss
 			year = Integer.valueOf(t.substring(0, 4));
@@ -73,7 +77,7 @@ public class DateTime {
 		}
 		
 		
-		
+		date = Calendar.getInstance();
 		date.set(year, month, day, hour, minute, second);
 	}
 	

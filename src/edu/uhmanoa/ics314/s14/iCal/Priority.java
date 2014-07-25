@@ -4,7 +4,7 @@ public class Priority {
 	int priority;
 	
 	public Priority() {
-		priority = 0;
+		this.priority = 0;
 	}
 	
 	public Priority(int priority) throws IllegalArgumentException {
@@ -13,9 +13,11 @@ public class Priority {
 	}
 	
 	public Priority(String priority) throws IllegalArgumentException {
-		priority = priority.replaceAll("[^0-9]+", "");
-		this.priority = Integer.valueOf(priority);
-		if(this.priority < 0 || this.priority > 9) throw new IllegalArgumentException("Invalid priority value");
+		priority = priority.replaceAll("[^0-9-]+", "");
+		int int_priority = Integer.valueOf(priority);
+		
+		if(int_priority < 0 || int_priority > 9) throw new IllegalArgumentException("Invalid priority value");
+		else this.priority = int_priority;
 	}
 	
 	@Override
