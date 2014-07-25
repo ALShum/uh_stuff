@@ -15,24 +15,23 @@ public class CalendarMain {
 		System.out.println("New Event");
 
 		//Version
+		/*
 		boolean versionDone = false;
 		String uiVersion = "";
 		while(!versionDone) {
 			System.out.println("Enter the Calendar version:");
 			uiVersion = scan.nextLine();
-			versionDone = (event1.eVersion(uiVersion)) ? true : false;
-		}
-		
-		//version not showing up in .ics file but it's fine here:
-		System.out.println(event1.event.getVersion());
-		
+			versionDone = event1.eVersion(uiVersion);
+		} */
+		event1.eVersion("");
+			
 		//Classification
 		boolean classificationDone = false;
 		String uiClassification = "";
 		while(!classificationDone) {
 			System.out.println("Enter the event classification:");
 			uiClassification = scan.nextLine();
-			classificationDone = (event1.eClassification(uiClassification)) ? true : false;
+			classificationDone = event1.eClassification(uiClassification);
 		}
 
 		//Geographic Position
@@ -41,7 +40,7 @@ public class CalendarMain {
 		while(!geoPosDone){
 			System.out.println("Enter the geographic position:");
 			uiGeoPos = scan.nextLine();
-			geoPosDone = (event1.eGeoPosition(uiGeoPos)) ? true : false;
+			geoPosDone = event1.eGeoPosition(uiGeoPos);
 		}
 	
 		//Priority
@@ -50,7 +49,7 @@ public class CalendarMain {
 		while(!priorityDone){
 			System.out.println("Enter the event priority:");
 			uiPriority = scan.nextLine();
-			priorityDone = (event1.ePriority(uiPriority)) ? true : false;
+			priorityDone = event1.ePriority(uiPriority);
 		}
 		
 		//Summary
@@ -59,7 +58,7 @@ public class CalendarMain {
 		while(!summaryDone){
 			System.out.println("Enter a summary of the event:");
 			uiSummary = scan.nextLine();
-			summaryDone = (event1.eSummary(uiSummary)) ? true : false;
+			summaryDone = event1.eSummary(uiSummary);
 		}
 	
 		//DTSTART
@@ -68,7 +67,7 @@ public class CalendarMain {
 		while(!DTSTARTDone){
 			System.out.println("Enter the event start time:");
 			uiDTSTART = scan.nextLine();			
-			DTSTARTDone = (event1.eDTStart(uiDTSTART)) ? true : false;
+			DTSTARTDone = event1.eDTStart(uiDTSTART);
 		}
 
 		//DTEND
@@ -77,7 +76,7 @@ public class CalendarMain {
 		while(!DTENDDone){
 			System.out.println("Enter the event end time:");
 			uiDTEND = scan.nextLine();
-			DTENDDone = (event1.eDTEnd(uiDTEND)) ? true : false;
+			DTENDDone = event1.eDTEnd(uiDTEND);
 		}
 
 		//Time Zone Identifier
@@ -86,7 +85,7 @@ public class CalendarMain {
 		while(!timeZoneDone){
 			System.out.println("Enter timezone version:");
 			uiTimeZone = scan.nextLine();			
-			timeZoneDone = (event1.eTimeZone(uiTimeZone)) ? true : false;
+			timeZoneDone = event1.eTimeZone(uiTimeZone);
 		}
 
 		try {
@@ -120,11 +119,17 @@ public class CalendarMain {
 			writer.write("\r\n");
 			writer.write("X-WR-TIMEZONE:" + event1.event.getTimeZone());
 			writer.write("\r\n");
+			writer.write("BEGIN:VTIMEZONE");
+			writer.write("\r\n");
+			writer.write("TZID:" + event1.event.getVersion());
+			writer.write("\r\n");
+			writer.write("END:VTIMEZONE");
+			writer.write("\r\n");
 			writer.write("BEGIN:VEVENT");
 			writer.write("\r\n");
-			writer.write("DTSTART:" + event1.event.getDTStart());
+			writer.write("DTSTART;TZID=" + event1.event.getTimeZone() + ":" + event1.event.getDTStart());
 			writer.write("\r\n");
-			writer.write("DTEND:" + event1.event.getDTEnd());
+			writer.write("DTEND;TZID=" + event1.event.getTimeZone() + ":" + event1.event.getDTEnd());
 			writer.write("\r\n");
 			writer.write("LOCATION:" + event1.event.getGeoPosition());
 			writer.write("\r\n");

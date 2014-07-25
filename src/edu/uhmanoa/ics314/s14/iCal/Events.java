@@ -27,7 +27,7 @@ public class Events {
 	* @return The classification value
 	*/
 	public boolean eClassification(String uiClass) {	
-		event.setVersion("");
+		event.setClassification("");
 		return true;
 	}	
 	
@@ -38,7 +38,7 @@ public class Events {
 	* @return The geoPosition  
 	*/
 	public boolean eGeoPosition(String uiGeoPos) {	
-		event.setVersion("");
+		event.setGeoPosition("");
 		return true;
 	}	
 	
