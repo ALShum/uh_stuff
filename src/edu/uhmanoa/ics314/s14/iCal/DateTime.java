@@ -58,25 +58,30 @@ public class DateTime {
 		t = t.replaceAll("[^0-9tT]+", "").toLowerCase();
 		if(t.contains("t") && t.length() == 15) { //detects YYYYMMDDTHHmmss
 			year = Integer.valueOf(t.substring(0, 4));
-			month = Integer.valueOf(t.substring(4, 6));
+			month = Integer.valueOf(t.substring(4, 6))-1;
 			day = Integer.valueOf(t.substring(6, 8));
 			hour = Integer.valueOf(t.substring(9, 11));
 			minute = Integer.valueOf(t.substring(11, 13));
 			second = Integer.valueOf(t.substring(13, 15));
+		} else if(t.contains("t") && t.length() == 13) { //detects YYYYMMDDTHHmm
+			year = Integer.valueOf(t.substring(0, 4));
+			month = Integer.valueOf(t.substring(4, 6))-1;
+			day = Integer.valueOf(t.substring(6, 8));
+			hour = Integer.valueOf(t.substring(9, 11));
+			minute = Integer.valueOf(t.substring(11, 13));
 		} else if(t.contains("t") && t.length() == 11) { //detects YYYYMMDDTHH
 			year = Integer.valueOf(t.substring(0, 4));
-			month = Integer.valueOf(t.substring(4, 6));
+			month = Integer.valueOf(t.substring(4, 6))-1;
 			day = Integer.valueOf(t.substring(6, 8));
 			hour = Integer.valueOf(t.substring(9, 11));
 		} else if(!t.contains("t") && t.length() == 8) { //detects YYYYMMDD
 			year = Integer.valueOf(t.substring(0, 4));
-			month = Integer.valueOf(t.substring(4, 6));
+			month = Integer.valueOf(t.substring(4, 6))-1;
 			day = Integer.valueOf(t.substring(6, 8));
 		} else {
 			throw new IllegalArgumentException("Unknown date format");
 		}
-		
-		
+	
 		date = Calendar.getInstance();
 		date.set(year, month, day, hour, minute, second);
 	}

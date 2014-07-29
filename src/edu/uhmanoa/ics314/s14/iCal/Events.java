@@ -7,6 +7,7 @@ public class Events {
 		event = new EventEntry();
 	}
 
+
 	/** 
 	* This property specifies the identifier corresponding to the
     * highest version number or the minimum and maximum range of the
@@ -27,7 +28,7 @@ public class Events {
 	* @return The classification value
 	*/
 	public boolean eClassification(String uiClass) {	
-		event.setClassification("");
+		event.setClassification("PUBLIC");
 		return true;
 	}	
 	
@@ -38,7 +39,7 @@ public class Events {
 	* @return The geoPosition  
 	*/
 	public boolean eGeoPosition(String uiGeoPos) {	
-		event.setGeoPosition("");
+		event.setGeoPosition("University of Hawaii at Manoa, 2500 Campus Rd, Honolulu, HI, United States");
 		return true;
 	}	
 	

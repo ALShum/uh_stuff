@@ -12,7 +12,7 @@ public class CalendarMain {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("New Event");
+		System.out.println("New Event");		
 
 		//Version
 		/*
@@ -22,10 +22,11 @@ public class CalendarMain {
 			System.out.println("Enter the Calendar version:");
 			uiVersion = scan.nextLine();
 			versionDone = event1.eVersion(uiVersion);
-		} */
+		} */	
 		event1.eVersion("");
-			
+
 		//Classification
+		/*
 		boolean classificationDone = false;
 		String uiClassification = "";
 		while(!classificationDone) {
@@ -33,8 +34,11 @@ public class CalendarMain {
 			uiClassification = scan.nextLine();
 			classificationDone = event1.eClassification(uiClassification);
 		}
-
+		*/
+		event1.eClassification("");
+		
 		//Geographic Position
+		/*
 		boolean geoPosDone = false;
 		String uiGeoPos = "";
 		while(!geoPosDone){
@@ -42,7 +46,9 @@ public class CalendarMain {
 			uiGeoPos = scan.nextLine();
 			geoPosDone = event1.eGeoPosition(uiGeoPos);
 		}
-	
+		*/
+		event1.eGeoPosition("");
+
 		//Priority
 		boolean priorityDone = false;
 		String uiPriority = "";
@@ -51,7 +57,7 @@ public class CalendarMain {
 			uiPriority = scan.nextLine();
 			priorityDone = event1.ePriority(uiPriority);
 		}
-		
+
 		//Summary
 		boolean summaryDone = false;
 		String uiSummary = "";
@@ -60,7 +66,7 @@ public class CalendarMain {
 			uiSummary = scan.nextLine();
 			summaryDone = event1.eSummary(uiSummary);
 		}
-	
+
 		//DTSTART
 		boolean DTSTARTDone = false;
 		String uiDTSTART = "";
@@ -87,17 +93,18 @@ public class CalendarMain {
 			uiTimeZone = scan.nextLine();			
 			timeZoneDone = event1.eTimeZone(uiTimeZone);
 		}
+		
 
 		try {
 			exportICS();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 		scan.close();
 	}
-	
-	
+
+
 	/** 
 	* This function will export the current calendar to
 	* a .ics file
@@ -121,16 +128,16 @@ public class CalendarMain {
 			writer.write("\r\n");
 			writer.write("BEGIN:VTIMEZONE");
 			writer.write("\r\n");
-			writer.write("TZID:" + event1.event.getVersion());
+			writer.write("TZID:" + event1.event.getTimeZone());
 			writer.write("\r\n");
 			writer.write("END:VTIMEZONE");
-			writer.write("\r\n");
+			writer.write("\r\n");	
 			writer.write("BEGIN:VEVENT");
-			writer.write("\r\n");
+			writer.write("\r\n");	
 			writer.write("DTSTART;TZID=" + event1.event.getTimeZone() + ":" + event1.event.getDTStart());
 			writer.write("\r\n");
 			writer.write("DTEND;TZID=" + event1.event.getTimeZone() + ":" + event1.event.getDTEnd());
-			writer.write("\r\n");
+			writer.write("\r\n");	
 			writer.write("LOCATION:" + event1.event.getGeoPosition());
 			writer.write("\r\n");
 			writer.write("SUMMARY:" + event1.event.getSummary());
@@ -138,7 +145,7 @@ public class CalendarMain {
 			writer.write("END:VEVENT");
 			writer.write("\r\n");
 			writer.write("END:VCALENDAR");
-			
+
 			writer.flush();
 			writer.close();
 			System.out.println("Done");

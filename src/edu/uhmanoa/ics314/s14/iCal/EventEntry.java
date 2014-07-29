@@ -2,6 +2,7 @@ package edu.uhmanoa.ics314.s14.iCal;
 
 public class EventEntry {
 	
+	private String description;
 	private String version;
 	private String classification;
 	private String geoPosition;
@@ -22,8 +23,9 @@ public class EventEntry {
 	* @param  dtEnd that will overwrite the current dtEnd stored.
 	* @param  timeZone that will overwrite the current timeZone stored.
 	*/
-    public EventEntry(String version, String classification, String geoPosition, String priority, String summary, 
+    public EventEntry(String description, String version, String classification, String geoPosition, String priority, String summary, 
     		String dtStart, String dtEnd, String timeZone){
+    	this.description = description;
         this.version = version;
         this.classification = classification;
         this.geoPosition = geoPosition;
@@ -35,6 +37,7 @@ public class EventEntry {
     }
     
     public EventEntry(){
+    	description = null;
     	version = null;
     	classification = null;
     	geoPosition = null;
@@ -50,6 +53,7 @@ public class EventEntry {
  	*
  	* @return The data currently stored under the requested value.  
  	*/
+    
  	public String getVersion() {
  		
  		return version;
@@ -95,7 +99,7 @@ public class EventEntry {
 	* @param  value that will overwrite the current value stored.
 	* @return  value The previous value stored which has been replaced.  
 	*/
-	
+ 	
 	public void setVersion(String version) {
 		this.version = version;
 	}
