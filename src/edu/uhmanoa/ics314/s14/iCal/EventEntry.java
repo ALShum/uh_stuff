@@ -2,7 +2,6 @@ package edu.uhmanoa.ics314.s14.iCal;
 
 public class EventEntry {
 	
-	private String description;
 	private String version;
 	private String classification;
 	private String geoPosition;
@@ -25,7 +24,6 @@ public class EventEntry {
 	*/
     public EventEntry(String description, String version, String classification, String geoPosition, String priority, String summary, 
     		String dtStart, String dtEnd, String timeZone){
-    	this.description = description;
         this.version = version;
         this.classification = classification;
         this.geoPosition = geoPosition;
@@ -37,7 +35,6 @@ public class EventEntry {
     }
     
     public EventEntry(){
-    	description = null;
     	version = null;
     	classification = null;
     	geoPosition = null;

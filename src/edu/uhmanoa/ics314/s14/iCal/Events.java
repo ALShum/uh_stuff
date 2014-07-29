@@ -114,7 +114,7 @@ public class Events {
 	*/
 	public boolean eTimeZone(String uiTimeZone) {
 		try {
-			Timezone_old tz = new Timezone_old(uiTimeZone);
+			Timezone tz = new Timezone(uiTimeZone);
 			event.setTimeZone(tz.toString());
 			return(true);
 		} catch(IllegalArgumentException e) {
