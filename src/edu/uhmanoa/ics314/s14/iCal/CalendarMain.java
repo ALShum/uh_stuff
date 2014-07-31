@@ -26,16 +26,26 @@ public class CalendarMain {
 		event1.eVersion("");
 
 		//Classification
-		/*
+		
 		boolean classificationDone = false;
-		String uiClassification = "";
-		while(!classificationDone) {
-			System.out.println("Enter the event classification:");
-			uiClassification = scan.nextLine();
-			classificationDone = event1.eClassification(uiClassification);
+       String uiClassification = "";
+     
+       Classification classification = null;
+		try {
+       classification = new Classification("PUBLIC");
 		}
-		*/
-		event1.eClassification("");
+		catch (Exception e){}
+		                 
+		while(!classificationDone) {
+       System.out.println("Enter the event classification:");
+       uiClassification = scan.nextLine();
+      try {
+       classification = new Classification(uiClassification);
+       }
+			 catch (Exception e){ }
+       classificationDone = (event1.eClassification(classification.retClassification())) ? true : false;
+       }
+		  event1.eClassification("");
 		
 		//Geographic Position
 		/*

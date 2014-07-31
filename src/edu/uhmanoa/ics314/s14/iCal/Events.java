@@ -27,8 +27,8 @@ public class Events {
 	*	    
 	* @return The classification value
 	*/
-	public boolean eClassification(String uiClass) {	
-		event.setClassification("PUBLIC");
+	public boolean eClassification(String classification) {	
+		event.setClassification(classification);
 		return true;
 	}	
 	

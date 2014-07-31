@@ -28,6 +28,7 @@ public class Priority {
 	public String priorityLevel() {
 		if(priority <= 4 && priority > 0) return("HIGH");
 		else if(priority == 5) return("MEDIUM");
-		else return("LOW");
+		else if(priority > 5) return("LOW");
+		else throw new IllegalArgumentException("Priority 0 specifies an undefined priority level"); 
 	}
 }
