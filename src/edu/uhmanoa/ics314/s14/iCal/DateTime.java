@@ -8,38 +8,38 @@ import java.text.SimpleDateFormat;
 public class DateTime {
 	SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd'T'HHmmss");
 	Calendar date;
-	
+
 	//sets to 11:59:00 PM of today
 	public DateTime() {
 		date = Calendar.getInstance();
 		date.set(date.get(Calendar.YEAR), date.get(Calendar.MONTH), date.get(Calendar.DATE), 23, 59, 0);
 	}
-	
+
 	public DateTime(Calendar date) {
 		this.date = date;
 	}
-	
+
 	//defaults to noon
 	public DateTime(int year, int month, int day) {
 		date = Calendar.getInstance();
 		date.set(year, month, day, 12, 0, 0);
 	}
-	
+
 	public DateTime(int year, int month, int day, int hour) {
 		date = Calendar.getInstance();
 		date.set(year, month, day, hour, 0, 0);
 	}
-	
+
 	public DateTime(int year, int month, int day, int hour, int minute) {
 		date = Calendar.getInstance();
 		date.set(year, month, day, hour, minute, 0);
 	}
-	
+
 	public DateTime(int year, int month, int day, int hour, int minute, int second) {
 		date = Calendar.getInstance();
 		date.set(year, month, day, hour, minute, second);
 	}
-	
+
 	//http://stackoverflow.com/questions/3389348/parse-any-date-in-java
 	//todo see if we can borrow code
 	public DateTime(String t) throws IllegalArgumentException {	
@@ -49,7 +49,7 @@ public class DateTime {
 		int hour = 0;
 		int minute = 0;
 		int second = 0;
-		
+
 		//TODO
 		//detects MM/DD/YYYY
 		//Note: cannot distinguish DD/MM/YYYY, we'll force europeans to use MM/DD/YYYY
@@ -81,11 +81,11 @@ public class DateTime {
 		} else {
 			throw new IllegalArgumentException("Unknown date format");
 		}
-	
+
 		date = Calendar.getInstance();
 		date.set(year, month, day, hour, minute, second);
 	}
-	
+
 	@Override
 	public String toString() {
 		return(df.format(date.getTime()));

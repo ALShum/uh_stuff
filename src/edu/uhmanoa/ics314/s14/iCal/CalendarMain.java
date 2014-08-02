@@ -26,27 +26,15 @@ public class CalendarMain {
 		event1.eVersion("");
 
 		//Classification
-		
 		boolean classificationDone = false;
-       String uiClassification = "";
-     
-       Classification classification = null;
-		try {
-       classification = new Classification("PUBLIC");
-		}
-		catch (Exception e){}
-		                 
+		String uiClassification = "";
 		while(!classificationDone) {
-       System.out.println("Enter the event classification:");
-       uiClassification = scan.nextLine();
-      try {
-       classification = new Classification(uiClassification);
-       }
-			 catch (Exception e){ }
-       classificationDone = (event1.eClassification(classification.retClassification())) ? true : false;
-       }
-		  event1.eClassification("");
-		
+			System.out.println("Enter the event classification:");
+			uiClassification = scan.nextLine();
+			classificationDone = event1.eClassification(uiClassification);
+		}
+		event1.eClassification("");
+
 		//Geographic Position
 		/*
 		boolean geoPosDone = false;
@@ -56,7 +44,7 @@ public class CalendarMain {
 			uiGeoPos = scan.nextLine();
 			geoPosDone = event1.eGeoPosition(uiGeoPos);
 		}
-		*/
+		 */
 		event1.eGeoPosition("");
 
 		//Priority
@@ -103,7 +91,7 @@ public class CalendarMain {
 			uiTimeZone = scan.nextLine();			
 			timeZoneDone = event1.eTimeZone(uiTimeZone);
 		}
-		
+
 
 		try {
 			exportICS();
@@ -116,10 +104,10 @@ public class CalendarMain {
 
 
 	/** 
-	* This function will export the current calendar to
-	* a .ics file
+	 * This function will export the current calendar to
+	 * a .ics file
 	 * @throws FileNotFoundException 
-	*/
+	 */
 	public static void exportICS() throws FileNotFoundException {
 		System.out.println("Exporting to .ics file");
 		try {

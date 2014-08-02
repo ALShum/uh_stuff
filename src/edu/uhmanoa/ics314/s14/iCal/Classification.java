@@ -1,60 +1,57 @@
 package edu.uhmanoa.ics314.s14.iCal;
 
- 
+
 
 public class Classification {
-	
+
 	//Instance variable (which holds the classification)
 	private String classification;
-	
-	
+
+
 	//Method
-	public Classification(String uiClassification) throws Exception {
-		
+	public Classification(String uiClassification) throws IllegalArgumentException {
+
 		switch(uiClassification) {
-	    
-	    
+
+
 		case "public":
 			classification = "PUBLIC";
-	    break;
+			break;
 		case "Public":
 			classification = "PUBLIC";
-	    break;
+			break;
 		case "PUBLIC":
 			classification = "PUBLIC";
-	    break;
+			break;
 		case "private":
 			classification = "PRIVATE";
-	    break;
+			break;
 		case "Private":
 			classification = "PRIVATE";
-	    break;
+			break;
 		case "PRIVATE":
 			classification = "PRIVATE";
-	    break;
+			break;
 		case "confidential":
 			classification = "CONFIDENTIAL";
-	    break;
+			break;
 		case "Confidential":
 			classification = "CONFIDENTIAL";
-	    break;
+			break;
 		case "CONFIDENTIAL":
 			classification = "CONFIDENTIAL";
-	    break;
-	    default:
-	    	throw new Exception("Classification not recognized.");
-	
-	
+			break;
+		default:
+			throw new IllegalArgumentException("Classification not recognized.");
+
+
+		}
+
+
 	}
-		
-	
+
+	@Override
+	public String toString() {
+		return(classification);
 	}
-	//Method that returns the classification 
-	public String retClassification()  
-	
-	{return classification;}
-
-
-
-
 }

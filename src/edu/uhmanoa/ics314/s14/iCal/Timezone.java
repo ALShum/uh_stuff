@@ -8,19 +8,19 @@ import java.util.TimeZone;
 public class Timezone {
 	String region;
 	String subregion;
-	
+
 	//default timezone
 	public Timezone() {
 		region = "Pacific";
 		subregion = "Honolulu";
 	}
-	
+
 	//string to process
 	public Timezone(String tz) throws IllegalArgumentException {
 		int slashPos = (tz.indexOf("/") < 0) ? tz.length() : tz.indexOf("/");
 		String region = tz.substring(0, slashPos).replaceAll("[^a-zA-Z0-9-+]+", "").trim().toLowerCase();
 		String subregion =  (tz.indexOf("/") < 0) ? "" : tz.substring(slashPos + 1, tz.length()).replaceAll("[^a-zA-Z0-9-+/_]+", "").trim().toLowerCase();
-		
+
 		List<String> validTZ = Arrays.asList(TimeZone.getAvailableIDs());
 		List<String> validRegions = new ArrayList<String>();
 		List<String> validSubregions = new ArrayList<String>();
@@ -34,20 +34,20 @@ public class Timezone {
 				validSubregions.add("");
 			}
 		}
-		
+
 		if(validRegions.contains(region)) {
 			this.region = region;
 		} else {
 			throw new IllegalArgumentException("Invalid region");
 		}
-		
+
 		if(validSubregions.contains(subregion)) {
 			this.subregion = subregion;
 		} else {
 			throw new IllegalArgumentException("Invalid subregion");
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		return((subregion == "") ? region : region + "/" + subregion);
