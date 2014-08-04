@@ -1,43 +1,47 @@
 package edu.uhmanoa.ics314.s14.iCal;
 
 public class GeoPosition {
-	String geoPositionLat;
-	String geoPositionLong;
-	float gPositionLat = Float.parseFloat(geoPositionLat);
-	float gPositionLong = Float.parseFloat(geoPositionLong);
-	{
-		//Figuring out if Latitude is above or below the Equator
 
-		/*if (gPositionLat >= 0 && gPositionLat <= 90){
-		System.out.println("Above the Equator" + "+");
-		else if (gPositionLat < 0 && gPositionLat >= -90);
-		System.out.println("Below the Equator" + "-");
-		 */
+	public String geoPosition;
+	private float gPositionLat;
+	private float gPositionLong;
 
-		//Weeding out the bad Latitudes
-
-		if (gPositionLat > 90.000000 && gPositionLat < -90.000000){
-			System.out.println("Your Latitude input is invalid!!!!!!!!!!");
-			else if (gPositionLat <= 90.000000 && gPositionLat >= -90.000000)
-				System.out.println("Your Latitude is: " + gPositionLat + ".");
-		}
-
-		if (gPositionLong < -180.000000 && gPositionLong > 180.000000){
-			System.out.println("Your Longitude input is invalid!!!!!!!!!!");
-			else if (gPositionLong >= -180.000000 && gPositionLong <= 180.000000)
-				System.out.println("Your Longitude input is: " + gPositionLong + ".");
-		}
-
-		if (gPositionLong >= 000.000000 && gPositionLong <= 180.000000){
-			System.out.println("You're on the East of the Prime Meridian");
-			else if (gPositionLong < 000.000000 && gPositionLong >= -180.00000)
-				System.out.println("You're on the West of the Prime Meridian");
-			else System.out.println("You're Lost.");
-		}
-
-
-
-
-
+	public GeoPosition() {
+		//TODO
 	}
+	
+	public GeoPosition(String uiGeoPos) throws IllegalArgumentException {
+		//Splitting the input string at the semicolon ";".
+		String[] geoPositionLatLong = uiGeoPos.split(";");
+		//Declaring and initializing geoPositionLat as the first of the two split strings (geoPositionLatLong[0]).
+		String geoPositionLat = geoPositionLatLong[0];
+		//Declaring and initializing geoPositionLong as the second of the two split strings (geoPositionLatLong[1]).
+		String geoPositionLong = geoPositionLatLong[1];
+		//Initializing gPositionLat as the float value of the geoPositionLat string.
+		gPositionLat = Float.valueOf(geoPositionLat);
+		//Initializing gPositionLong as the float value of the geoPositionLong string.
+		gPositionLong = Float.valueOf(geoPositionLong);
+
+
+		//Setting the valid range of the Latitude input.
+		if (gPositionLat > 90.000000 && gPositionLat < -90.000000) {
+			throw new IllegalArgumentException("Invalid Latitiude");
+		}
+
+		//Setting the valid range of the Longitude input.
+		if (gPositionLong < -180.000000 && gPositionLong > 180.000000) {
+			throw new IllegalArgumentException("Invalid Longitude");
+		}
+	}
+	
+	public GeoPosition(float lat, float lon) throws IllegalArgumentException {
+		//TODO
+	}
+	
+
+	@Override
+	public String toString() {
+		return Float.toString(gPositionLat) + ";" + Float.toString(gPositionLong);
+	}
+
 }
