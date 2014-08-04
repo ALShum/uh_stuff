@@ -59,7 +59,7 @@ public class CalendarGUI extends JApplet implements ActionListener{
 		classificationIn.addActionListener(this);
 
 		//Geographic Position
-		label3 = new JLabel("Geographic Position ");
+    label3 = new JLabel("Geographic Position ((+/-)xx.xxxxxx;(+/-)xxx.xxxxxx)");
 		first.add(label3);
 		geoPosIn = new JTextField(60);
 		first.add(geoPosIn);

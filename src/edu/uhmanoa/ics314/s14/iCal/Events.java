@@ -44,10 +44,16 @@ public class Events {
 	 *	    
 	 * @return The geoPosition  
 	 */
-	public boolean eGeoPosition(String uiGeoPos) {	
-		event.setGeoPosition("University of Hawaii at Manoa, 2500 Campus Rd, Honolulu, HI, United States");
-		return true;
-	}	
+	public boolean eGeoPosition(String geoPosition) {  
+		try {
+			GeoPosition g = new GeoPosition(geoPosition);
+			event.setGeoPosition(g.toString());
+			return(true);
+		} catch (IllegalArgumentException e){
+			System.out.println(e); 
+			return(false);
+		}    
+	}   
 
 	/** 
 	 *  This property defines the relative priority for a calendar

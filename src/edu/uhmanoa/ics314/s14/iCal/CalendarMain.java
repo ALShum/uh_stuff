@@ -36,7 +36,7 @@ public class CalendarMain {
 		event1.eClassification("");
 
 		//Geographic Position
-		/*
+		
 		boolean geoPosDone = false;
 		String uiGeoPos = "";
 		while(!geoPosDone){
@@ -44,7 +44,7 @@ public class CalendarMain {
 			uiGeoPos = scan.nextLine();
 			geoPosDone = event1.eGeoPosition(uiGeoPos);
 		}
-		 */
+		
 		event1.eGeoPosition("");
 
 		//Priority
