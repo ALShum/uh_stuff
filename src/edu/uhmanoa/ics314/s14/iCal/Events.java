@@ -1,10 +1,24 @@
 package edu.uhmanoa.ics314.s14.iCal;
 
 public class Events {
-	public EventEntry event;
+	private String version;
+	private String classification;
+	private String geoPosition;
+	private String priority;
+	private String summary;
+	private String dtStart;
+	private String dtEnd;
+	private String timeZone;
 
 	public Events() {
-		event = new EventEntry();
+		version = null;
+		classification = null;
+		geoPosition = null;
+		priority = null;
+		summary = null;
+		dtStart = null;
+		dtEnd = null;
+		timeZone = null;
 	}
 
 
@@ -17,7 +31,7 @@ public class Events {
 	 * @return The version value  
 	 */
 	public boolean eVersion(String uiVersion) {
-		event.setVersion("2.0");
+		this.version = "2.0";
 		return true;
 	}
 
@@ -30,7 +44,7 @@ public class Events {
 	public boolean eClassification(String classification) {	
 		try {
 			Classification c = new Classification(classification);
-			event.setClassification(c.toString());
+			this.classification = c.toString();
 			return(true);
 		} catch(IllegalArgumentException e) {
 			System.out.println(e);
@@ -47,7 +61,7 @@ public class Events {
 	public boolean eGeoPosition(String geoPosition) {  
 		try {
 			GeoPosition g = new GeoPosition(geoPosition);
-			event.setGeoPosition(g.toString());
+			this.geoPosition = g.toString();
 			return(true);
 		} catch (IllegalArgumentException e){
 			System.out.println(e); 
@@ -64,7 +78,7 @@ public class Events {
 	public boolean ePriority(String uiPriority) {
 		try {
 			Priority p = new Priority(uiPriority);
-			event.setPriority(p.toString());
+			priority = p.toString();
 			return(true);
 		} catch(IllegalArgumentException e) {
 			System.out.println(e);
@@ -79,7 +93,7 @@ public class Events {
 	 * @return The summary value  
 	 */
 	public boolean eSummary(String uiSummary) {
-		event.setSummary(uiSummary);
+		summary = uiSummary;
 		return(true);
 	}	
 
@@ -92,7 +106,7 @@ public class Events {
 	public boolean eDTStart(String uiDTS) {
 		try {
 			DateTime start = new DateTime(uiDTS);
-			event.setDTStart(start.toString());
+			dtStart = start.toString();
 			return(true);
 		} catch(IllegalArgumentException e) {
 			System.out.println(e);
@@ -109,7 +123,7 @@ public class Events {
 	public boolean eDTEnd(String uiDTE) {		
 		try {
 			DateTime end = new DateTime(uiDTE);
-			event.setDTEnd(end.toString());
+			dtEnd = end.toString();
 			return(true);
 		} catch(IllegalArgumentException e) {
 			System.out.println(e);
@@ -127,13 +141,44 @@ public class Events {
 	public boolean eTimeZone(String uiTimeZone) {
 		try {
 			Timezone tz = new Timezone(uiTimeZone);
-			event.setTimeZone(tz.toString());
+			timeZone = tz.toString();
 			return(true);
 		} catch(IllegalArgumentException e) {
 			System.out.println(e);
 			return(false);
 		}
 	}
+	
+	public String getVersion() {
+		return version;
+	}
 
+	public String getClassification() {
+		return classification;
+	}
+
+	public String getGeoPosition() {
+		return geoPosition;
+	}
+
+	public String getPriority() {
+		return priority;
+	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public String getDTStart() {
+		return dtStart;
+	}
+
+	public String getDTEnd() {
+		return dtEnd;
+	}
+
+	public String getTimeZone() {
+		return timeZone;
+	}
 
 }

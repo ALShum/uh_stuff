@@ -119,7 +119,7 @@ public class CalendarGUI extends JApplet implements ActionListener{
 			if(!vDone){
 				invalidMessage(versionIn, label1, "Version");	
 			} else {
-				String newLabel1 = "Version set as: " + e.event.getVersion();
+				String newLabel1 = "Version set as: " + e.getVersion();
 				validMessage(label1, newLabel1);
 			}
 		}
@@ -131,8 +131,8 @@ public class CalendarGUI extends JApplet implements ActionListener{
 				Classification classification;
 
 				try{
-					classification = new Classification(e.event.getClassification());
-					String newLabel2 = "Classification set as: " + e.event.getClassification();
+					classification = new Classification(e.getClassification());
+					String newLabel2 = "Classification set as: " + e.getClassification();
 					validMessage(label2, newLabel2);
 				}
 				catch (Exception e) {
@@ -145,7 +145,7 @@ public class CalendarGUI extends JApplet implements ActionListener{
 			if(!gDone){
 				invalidMessage(geoPosIn, label3, "Geographic Position");
 			} else {
-				String newLabel3 = "Geographic Position set as: " + e.event.getGeoPosition();
+				String newLabel3 = "Geographic Position set as: " + e.getGeoPosition();
 				validMessage(label3, newLabel3);
 			}			
 		}
@@ -154,7 +154,7 @@ public class CalendarGUI extends JApplet implements ActionListener{
 			if(!pDone){
 				invalidMessage(priorityIn, label4, "Priority");
 			} else {
-				String newLabel4 = "Priority set as: " + e.event.getPriority();
+				String newLabel4 = "Priority set as: " + e.getPriority();
 				validMessage(label4, newLabel4);
 			}
 		}
@@ -163,7 +163,7 @@ public class CalendarGUI extends JApplet implements ActionListener{
 			if(!sDone){
 				invalidMessage(summaryIn, label5, "Summary");
 			} else {
-				String newLabel5 = "Summary set as: " + e.event.getSummary();
+				String newLabel5 = "Summary set as: " + e.getSummary();
 				validMessage(label5, newLabel5);
 			}
 		}
@@ -172,7 +172,7 @@ public class CalendarGUI extends JApplet implements ActionListener{
 			if(!dtsDone){
 				invalidMessage(dtStartIn, label6, "Start Time");
 			} else {
-				String newLabel6 = "Start Time set as: " + e.event.getDTStart();
+				String newLabel6 = "Start Time set as: " + e.getDTStart();
 				validMessage(label6, newLabel6);
 			}
 		}		
@@ -181,7 +181,7 @@ public class CalendarGUI extends JApplet implements ActionListener{
 			if(!dteDone){
 				invalidMessage(dtEndIn, label7, "End Time");
 			} else {
-				String newLabel7 = "End Time set as: " + e.event.getDTEnd();
+				String newLabel7 = "End Time set as: " + e.getDTEnd();
 				validMessage(label7, newLabel7);
 			}
 		}
@@ -190,7 +190,7 @@ public class CalendarGUI extends JApplet implements ActionListener{
 			if(!tzDone){
 				invalidMessage(timeZoneIn, label8, "Time Zone");
 			} else {
-				String newLabel8 = "Time Zone set as: " + e.event.getTimeZone();
+				String newLabel8 = "Time Zone set as: " + e.getTimeZone();
 				validMessage(label8, newLabel8);
 			}
 		}
@@ -228,31 +228,31 @@ public class CalendarGUI extends JApplet implements ActionListener{
 			FileWriter writer = new FileWriter(eventFile);
 			writer.write("BEGIN:VCALENDAR");
 			writer.write("\r\n");
-			writer.write("VERSION:" + e.event.getVersion());
+			writer.write("VERSION:" + e.getVersion());
 			writer.write("\r\n");
 			writer.write("PRODID:-//ics314//iCal_Ngauamo_Schenk_Shum");
 			writer.write("\r\n");
 			writer.write("CALSCALE:GREGORIAN");
 			writer.write("\r\n");
-			writer.write("METHOD:" + e.event.getClassification());
+			writer.write("METHOD:" + e.getClassification());
 			writer.write("\r\n");
-			writer.write("X-WR-TIMEZONE:" + e.event.getTimeZone());
+			writer.write("X-WR-TIMEZONE:" + e.getTimeZone());
 			writer.write("\r\n");
 			writer.write("BEGIN:VTIMEZONE");
 			writer.write("\r\n");
-			writer.write("TZID:" + e.event.getTimeZone());
+			writer.write("TZID:" + e.getTimeZone());
 			writer.write("\r\n");
 			writer.write("END:VTIMEZONE");
 			writer.write("\r\n");	
 			writer.write("BEGIN:VEVENT");
 			writer.write("\r\n");	
-			writer.write("DTSTART;TZID=" + e.event.getTimeZone() + ":" + e.event.getDTStart());
+			writer.write("DTSTART;TZID=" + e.getTimeZone() + ":" + e.getDTStart());
 			writer.write("\r\n");
-			writer.write("DTEND;TZID=" + e.event.getTimeZone() + ":" + e.event.getDTEnd());
+			writer.write("DTEND;TZID=" + e.getTimeZone() + ":" + e.getDTEnd());
 			writer.write("\r\n");	
-			writer.write("LOCATION:" + e.event.getGeoPosition());
+			writer.write("LOCATION:" + e.getGeoPosition());
 			writer.write("\r\n");
-			writer.write("SUMMARY:" + e.event.getSummary());
+			writer.write("SUMMARY:" + e.getSummary());
 			writer.write("\r\n");
 			writer.write("END:VEVENT");
 			writer.write("\r\n");

@@ -7,23 +7,12 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class CalendarMain {
-	public static Events event1 = new Events();
+	public static Events e = new Events();
 	public static File eventFile = new File("events.ics");
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("New Event");		
-
-		//Version
-		/*
-		boolean versionDone = false;
-		String uiVersion = "";
-		while(!versionDone) {
-			System.out.println("Enter the Calendar version:");
-			uiVersion = scan.nextLine();
-			versionDone = event1.eVersion(uiVersion);
-		} */	
-		event1.eVersion("");
 
 		//Classification
 		boolean classificationDone = false;
@@ -31,21 +20,17 @@ public class CalendarMain {
 		while(!classificationDone) {
 			System.out.println("Enter the event classification:");
 			uiClassification = scan.nextLine();
-			classificationDone = event1.eClassification(uiClassification);
+			classificationDone = e.eClassification(uiClassification);
 		}
-		event1.eClassification("");
 
 		//Geographic Position
-		
 		boolean geoPosDone = false;
 		String uiGeoPos = "";
 		while(!geoPosDone){
 			System.out.println("Enter the geographic position:");
 			uiGeoPos = scan.nextLine();
-			geoPosDone = event1.eGeoPosition(uiGeoPos);
+			geoPosDone = e.eGeoPosition(uiGeoPos);
 		}
-		
-		event1.eGeoPosition("");
 
 		//Priority
 		boolean priorityDone = false;
@@ -53,7 +38,7 @@ public class CalendarMain {
 		while(!priorityDone){
 			System.out.println("Enter the event priority:");
 			uiPriority = scan.nextLine();
-			priorityDone = event1.ePriority(uiPriority);
+			priorityDone = e.ePriority(uiPriority);
 		}
 
 		//Summary
@@ -62,7 +47,7 @@ public class CalendarMain {
 		while(!summaryDone){
 			System.out.println("Enter a summary of the event:");
 			uiSummary = scan.nextLine();
-			summaryDone = event1.eSummary(uiSummary);
+			summaryDone = e.eSummary(uiSummary);
 		}
 
 		//DTSTART
@@ -71,7 +56,7 @@ public class CalendarMain {
 		while(!DTSTARTDone){
 			System.out.println("Enter the event start time:");
 			uiDTSTART = scan.nextLine();			
-			DTSTARTDone = event1.eDTStart(uiDTSTART);
+			DTSTARTDone = e.eDTStart(uiDTSTART);
 		}
 
 		//DTEND
@@ -80,7 +65,7 @@ public class CalendarMain {
 		while(!DTENDDone){
 			System.out.println("Enter the event end time:");
 			uiDTEND = scan.nextLine();
-			DTENDDone = event1.eDTEnd(uiDTEND);
+			DTENDDone = e.eDTEnd(uiDTEND);
 		}
 
 		//Time Zone Identifier
@@ -89,7 +74,7 @@ public class CalendarMain {
 		while(!timeZoneDone){
 			System.out.println("Enter timezone version:");
 			uiTimeZone = scan.nextLine();			
-			timeZoneDone = event1.eTimeZone(uiTimeZone);
+			timeZoneDone = e.eTimeZone(uiTimeZone);
 		}
 
 
@@ -114,31 +99,31 @@ public class CalendarMain {
 			FileWriter writer = new FileWriter(eventFile);
 			writer.write("BEGIN:VCALENDAR");
 			writer.write("\r\n");
-			writer.write("VERSION:" + event1.event.getVersion());
+			writer.write("VERSION:" + e.getVersion());
 			writer.write("\r\n");
 			writer.write("PRODID:-//ics314//iCal_Ngauamo_Schenk_Shum");
 			writer.write("\r\n");
 			writer.write("CALSCALE:GREGORIAN");
 			writer.write("\r\n");
-			writer.write("METHOD:" + event1.event.getClassification());
+			writer.write("METHOD:" + e.getClassification());
 			writer.write("\r\n");
-			writer.write("X-WR-TIMEZONE:" + event1.event.getTimeZone());
+			writer.write("X-WR-TIMEZONE:" + e.getTimeZone());
 			writer.write("\r\n");
 			writer.write("BEGIN:VTIMEZONE");
 			writer.write("\r\n");
-			writer.write("TZID:" + event1.event.getTimeZone());
+			writer.write("TZID:" + e.getTimeZone());
 			writer.write("\r\n");
 			writer.write("END:VTIMEZONE");
 			writer.write("\r\n");	
 			writer.write("BEGIN:VEVENT");
 			writer.write("\r\n");	
-			writer.write("DTSTART;TZID=" + event1.event.getTimeZone() + ":" + event1.event.getDTStart());
+			writer.write("DTSTART;TZID=" + e.getTimeZone() + ":" + e.getDTStart());
 			writer.write("\r\n");
-			writer.write("DTEND;TZID=" + event1.event.getTimeZone() + ":" + event1.event.getDTEnd());
+			writer.write("DTEND;TZID=" + e.getTimeZone() + ":" + e.getDTEnd());
 			writer.write("\r\n");	
-			writer.write("LOCATION:" + event1.event.getGeoPosition());
+			writer.write("LOCATION:" + e.getGeoPosition());
 			writer.write("\r\n");
-			writer.write("SUMMARY:" + event1.event.getSummary());
+			writer.write("SUMMARY:" + e.getSummary());
 			writer.write("\r\n");
 			writer.write("END:VEVENT");
 			writer.write("\r\n");
