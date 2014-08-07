@@ -11,6 +11,13 @@ public class GeoPosition {
 	}
 	
 	public GeoPosition(String uiGeoPos) throws IllegalArgumentException {
+     int length = uiGeoPos.length();
+    if (length <= 0)	{
+			throw new IllegalArgumentException("Invalid Input.");
+		}
+   
+   
+   
 		//Splitting the input string at the semicolon ";".
 		String[] geoPositionLatLong = uiGeoPos.split(";");
 		//Declaring and initializing geoPositionLat as the first of the two split strings (geoPositionLatLong[0]).
@@ -41,7 +48,7 @@ public class GeoPosition {
 
 	@Override
 	public String toString() {
-		return Float.toString(gPositionLat) + ";" + Float.toString(gPositionLong);
+		return Float.toString(gPositionLat) + "," + Float.toString(gPositionLong);
 	}
 
 }
