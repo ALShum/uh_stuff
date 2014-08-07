@@ -11,7 +11,7 @@ public class Events {
 	private String timeZone;
 
 	public Events() {
-		version = null;
+		version = "2.0"; //set version
 		classification = null;
 		geoPosition = null;
 		priority = null;
@@ -19,20 +19,6 @@ public class Events {
 		dtStart = null;
 		dtEnd = null;
 		timeZone = null;
-	}
-
-
-	/** 
-	 * This property specifies the identifier corresponding to the
-	 * highest version number or the minimum and maximum range of the
-	 * iCalendar specification that is required in order to interpret the
-	 * iCalendar object.
-	 *	    
-	 * @return The version value  
-	 */
-	public boolean eVersion(String uiVersion) {
-		this.version = "2.0";
-		return true;
 	}
 
 	/** 

@@ -12,32 +12,37 @@ public class DateTime {
 	//sets to 11:59:00 PM of today
 	public DateTime() {
 		date = Calendar.getInstance();
-		date.set(date.get(Calendar.YEAR), date.get(Calendar.MONTH), date.get(Calendar.DATE), 23, 59, 0);
+		date.set(date.get(Calendar.YEAR), date.get(Calendar.MONTH), date.get(Calendar.DATE), 0, 0, 0);
 	}
 
 	public DateTime(Calendar date) {
+		date.set(date.get(Calendar.YEAR),
+				date.get(Calendar.MONTH) - 1, 
+				date.get(Calendar.DATE), 
+				date.get(Calendar.HOUR), 
+				date.get(Calendar.MINUTE), 
+				date.get(Calendar.SECOND));
 		this.date = date;
 	}
 
-	//defaults to noon
 	public DateTime(int year, int month, int day) {
 		date = Calendar.getInstance();
-		date.set(year, month, day, 12, 0, 0);
+		date.set(year, month - 1, day, 0, 0, 0);
 	}
 
 	public DateTime(int year, int month, int day, int hour) {
 		date = Calendar.getInstance();
-		date.set(year, month, day, hour, 0, 0);
+		date.set(year, month - 1, day, hour, 0, 0);
 	}
 
 	public DateTime(int year, int month, int day, int hour, int minute) {
 		date = Calendar.getInstance();
-		date.set(year, month, day, hour, minute, 0);
+		date.set(year, month - 1, day, hour, minute, 0);
 	}
 
 	public DateTime(int year, int month, int day, int hour, int minute, int second) {
 		date = Calendar.getInstance();
-		date.set(year, month, day, hour, minute, second);
+		date.set(year, month - 1, day, hour, minute, second);
 	}
 
 	//http://stackoverflow.com/questions/3389348/parse-any-date-in-java
