@@ -4,6 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * Unit tests for Timezone class.
+ * Timezoneclass handles converting timezone locations from the UI 
+ * to properly formatted iCalendar specifications for event time zone.
+ * @author Alex Shum
+ */
 public class TimezoneUnitTest {
 	//fast test
 	public boolean test(String s) {

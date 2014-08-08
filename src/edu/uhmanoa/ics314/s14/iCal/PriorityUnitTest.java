@@ -4,6 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * Unit tests for Priority class.
+ * Priority class handles converting priority level from UI 
+ * to valid iCalendar specifications for event priority.
+ * @author Alex Shum
+ */
 public class PriorityUnitTest {
 
 	@Test

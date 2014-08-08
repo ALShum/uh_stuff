@@ -1,5 +1,9 @@
 package edu.uhmanoa.ics314.s14.iCal;
 
+/**
+ * 
+ * @author Katrina Schenk
+ */
 public class Events {
 	private String version;
 	private String classification;

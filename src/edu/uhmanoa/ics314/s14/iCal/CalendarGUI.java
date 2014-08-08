@@ -15,6 +15,10 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * 
+ * @author Katrina Schenk
+ */
 public class CalendarGUI extends JApplet implements ActionListener{
         Events e = new Events();
         private JPanel top;

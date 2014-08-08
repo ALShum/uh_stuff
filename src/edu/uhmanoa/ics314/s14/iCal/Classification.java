@@ -1,7 +1,10 @@
 package edu.uhmanoa.ics314.s14.iCal;
 
 
-
+/**
+ * 
+ * @author Tamotu Ngauamo
+ */
 public class Classification {
 
 	//Instance variable (which holds the classification)

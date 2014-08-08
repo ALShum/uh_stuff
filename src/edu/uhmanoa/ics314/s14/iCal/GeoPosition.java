@@ -1,5 +1,9 @@
 package edu.uhmanoa.ics314.s14.iCal;
 
+/**
+ * 
+ * @author Tamotu Ngauamo
+ */
 public class GeoPosition {
 
 	public String geoPosition;

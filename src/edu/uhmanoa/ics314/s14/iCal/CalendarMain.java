@@ -6,6 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * 
+ * @author Katrina Schenk
+ */
 public class CalendarMain {
 	public static Events e = new Events();
 	public static File eventFile = new File("events.ics");

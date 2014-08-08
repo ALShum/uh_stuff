@@ -4,6 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * Unit tests for GeoPosition class.
+ * GeoPosition class handles converting lat/long coordinates from UI 
+ * to valid iCalendar specifications for event location.
+ */
 public class GeoPositionUnitTest {
 
 	@Test

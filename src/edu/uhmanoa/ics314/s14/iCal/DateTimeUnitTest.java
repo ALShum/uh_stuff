@@ -7,6 +7,12 @@ import java.util.Calendar;
 
 import org.junit.Test;
 
+/**
+ * Unit tests for DateTime class.
+ * DateTime class handles converting dates from the UI 
+ * to properly formatted iCalendar specifications for event start/end times.
+ * @author Alex Shum
+ */
 public class DateTimeUnitTest {
 
 	@Test
