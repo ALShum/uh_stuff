@@ -8,25 +8,27 @@ import org.junit.Test;
  * Unit tests for GeoPosition class.
  * GeoPosition class handles converting lat/long coordinates from UI 
  * to valid iCalendar specifications for event location.
+ * 
+ * @warning Notice that the semicolon must have an escape character before it.
  */
 public class GeoPositionUnitTest {
 
 	@Test
 	public void testValid1() {
 		GeoPosition g = new GeoPosition("10;30");
-		//assertTrue(g.toString().equals("10.0;30.0"));
+		assertTrue(g.toString().equals("10.0\\;30.0"));
 	}
 	
 	@Test
 	public void testValid2() {
 		GeoPosition g = new GeoPosition("-15;-20");
-		assertTrue(g.toString().equals("-15.0;-20.0"));
+		assertTrue(g.toString().equals("-15.0\\;-20.0"));
 	}
 	
 	@Test
 	public void testValid3() {
 		GeoPosition g = new GeoPosition("-10.5;40.2231");
-		assertTrue(g.toString().equals("-10.5;40.2231"));
+		assertTrue(g.toString().equals("-10.5\\;40.2231"));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
