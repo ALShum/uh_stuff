@@ -22,10 +22,13 @@ import java.util.Arrays;
  * @author Alex Shum
  */
 public class Repeat {
-	private Freq f;
+	public String f = "Every Weekday (Monday to Friday)";
 	private int interval = -1;
-	private int count = -1;
+	public String count = "0";
 	private Day[] d = new Day[]{Day.MO, Day.TU, Day.WE, Day.TH, Day.FR};
+   
+   
+        public Repeat(){ }
 	
 	/**
 	 * Set the event recurrence rule.
@@ -33,7 +36,7 @@ public class Repeat {
 	 * 
 	 * @param f The event recurrence rule as a Repeat.Freq enum type.
 	 */
-	public Repeat(Freq f) {
+	public Repeat(String f) {
 		this.f = f;
 	}
 	
@@ -45,11 +48,13 @@ public class Repeat {
 	 * @param count Total number of times event repeats.
 	 * @throws IllegalArgumentException If count is less than 0.
 	 */
-	public Repeat(Freq f, int count) throws IllegalArgumentException {
-		if(count < 0) throw new IllegalArgumentException("This is not a valid count");
-		
+	public Repeat(String f, String count) throws IllegalArgumentException {
+          if(Integer.parseInt(count2) < 0) {
+             throw new IllegalArgumentException("This is not a valid count");
+          } else {
 		this.f = f;
-		this.count = count;
+		this.count = count2;
+          }
 	}
 	
 	/**
@@ -62,8 +67,8 @@ public class Repeat {
 	 * @param count Total number of times event repeats.
 	 * @throws IllegalArgumentException If interval or count is less than 0.		 
 	 */
-	public Repeat(Freq f, int interval, int count) throws IllegalArgumentException {
-		if(count < 0) throw new IllegalArgumentException("This is not a valid count");
+	public Repeat(String f, int interval, String count) throws IllegalArgumentException {
+		if(Integer.parseInt(count) < 0) throw new IllegalArgumentException("This is not a valid count");
 		if(interval < 0) throw new IllegalArgumentException("This is not a valid interval");
 		
 		this.f = f;
@@ -83,8 +88,8 @@ public class Repeat {
 	 * @param d An array of Repeat.Day enum objects of the days of the week.
 	 * @throws IllegalArgumentException If interval or count is less than 0.  Or if days of week incorrectly formatted.
 	 */
-	public Repeat(Freq f, int interval, int count, Day[] d) throws IllegalArgumentException {
-		if(count < 0) throw new IllegalArgumentException("This is not a valid count");
+	public Repeat(String f, int interval, String count, Day[] d) throws IllegalArgumentException {
+		if(Integer.parseInt(count) < 0) throw new IllegalArgumentException("This is not a valid count");
 		if(interval < 0) throw new IllegalArgumentException("This is not a valid interval");
 		if(d.length > 7) throw new IllegalArgumentException("Too many days of the week!");
 		
@@ -94,16 +99,31 @@ public class Repeat {
 		this.d = d;
 	}
 	
-	/**
-	 * 
+	/** 
+         * This property creates a string of data for the repeating function
+	 * @return string
 	 */
-	@Override
-	public String toString() {
-		String toReturn = "FREQ=" + f.toString();
-		if(interval > 0) toReturn = toReturn + ";INTERVAL=" + Integer.toString(interval);
-		if(count > 0) toReturn = toReturn + ";COUNT=" + Integer.toString(count);
-		toReturn = toReturn + ";BYDAY=" + Arrays.toString(d).replaceAll("[^a-zA-Z,]+", "");
-		
+	public String getString() {
+		String freq = "";
+                if(f.contains("Every Weekday (Monday to Friday)")){
+                	freq = "WEEKLY";
+                } else {
+                	freq = f;
+                }
+                
+                String byTitle = "";
+                if(f.equals("MONTHLY")){
+                //	byTitle = "BYMONTHDAY";
+                }
+                if(freq.equals("WEEKLY")){
+                	byTitle = ";BYDAY=";
+                }
+                String byContent = "";
+                if(f.contains("Every Weekday (Monday to Friday)")){
+                	byContent = "MO,TU,WE,TH,FR";
+                }
+               
+                String toReturn = "FREQ=" + freq + ";" + "COUNT=" + count + byTitle + byContent;
 		return(toReturn);
 	}
 

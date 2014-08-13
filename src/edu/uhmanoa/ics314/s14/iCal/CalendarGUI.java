@@ -16,7 +16,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * 
+ * GUI prompts for and takes in user inout. Input is passed to 
+ * events.java where it is processed. calendarGUI then exports 
+ * a .ics file of the data
+ *
  * @author Katrina Schenk
  */
 public class CalendarGUI extends JApplet implements ActionListener{
@@ -40,6 +43,9 @@ public class CalendarGUI extends JApplet implements ActionListener{
 	boolean dteDone = false;
 	boolean tzDone = false;
 	JLabel notifications;
+        boolean includeRepeat = false;  
+        String[] frequency = { "YEARLY", "MONTHLY", "WEEKLY",
+        		"Every Weekday (Monday to Friday)", "DAILY"}; 
 
 	public CalendarGUI() {          
 		//top level
@@ -145,10 +151,13 @@ public class CalendarGUI extends JApplet implements ActionListener{
 				frequencyDrop.setVisible(true);
 				label9.setVisible(true);
 				occurrences.setVisible(true);
+                                includeRepeat = true;
 				if(e.getStateChange() == ItemEvent.DESELECTED){
 					frequencyDrop.setVisible(false);
 					label9.setVisible(false);
 					occurrences.setVisible(false);
+                                        occurrences.setText("");	 
+                    		        includeRepeat = false;
 				}
 			}
 		});
@@ -239,6 +248,19 @@ public class CalendarGUI extends JApplet implements ActionListener{
 		if(ae.getSource() == this.export){
 			exportPressed();
 		}
+      
+                if(ae.getSource() == this.occurrences){				 
+               		int index = frequencyDrop.getSelectedIndex();
+        	        String selected = frequency[index];
+        		repDone = e.eRepeating(selected, occurrences.getText());
+        		if(!repDone){
+        		 invalidMessage(occurrences, label9, "Occurrences");
+        		} else {
+        		    String newLabel9 = "Ends after " + e.getFCount() + " occurrences";
+        		    validMessage(label9, newLabel9);
+        		}
+                 }
+      
 
 	}
 
@@ -253,7 +275,7 @@ public class CalendarGUI extends JApplet implements ActionListener{
 	}
 
 	public void exportPressed(){
-		if(vDone && cDone && gDone && pDone && sDone && dtsDone && dteDone && tzDone){
+     if(cDone && gDone && pDone && sDone && dtsDone && dteDone && tzDone){
 			try {
 				exportICS();
 			} catch (FileNotFoundException e) {
@@ -292,6 +314,10 @@ public class CalendarGUI extends JApplet implements ActionListener{
 			writer.write("\r\n");
 			writer.write("DTEND;TZID=" + e.getTimeZone() + ":" + e.getDTEnd());
 			writer.write("\r\n");   
+                        if(includeRepeat){									
+                           writer.write("RRULE:" + e.getFString());	  
+                           writer.write("\r\n");   							
+                        }
 			writer.write("LOCATION:" + e.getGeoPosition());
 			writer.write("\r\n");
 			writer.write("SUMMARY:" + e.getSummary());

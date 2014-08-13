@@ -13,6 +13,9 @@ public class Events {
 	private String dtStart;
 	private String dtEnd;
 	private String timeZone;
+        private String frequency;
+        private String count;		
+        private Repeat r;
 
 	public Events() {
 		version = "2.0"; //set version
@@ -23,6 +26,8 @@ public class Events {
 		dtStart = null;
 		dtEnd = null;
 		timeZone = null;
+                frequency = null;		
+                count = null;
 	}
 
 	/** 
@@ -138,6 +143,26 @@ public class Events {
 			return(false);
 		}
 	}
+   
+   
+    /** 
+	 *  This property specifies the text value that uniquely
+	 *  identifies the "FREQUENCY" and "COUNT" calendar component 
+   *  in the scope of an iCalendar object.
+	 *	    
+	 * @return boolean 
+	 */
+     public boolean eRepeating(String frequency, String count){ 
+         try {
+                 r = new Repeat(frequency, count);
+        	 this.frequency = r.f;
+        	 this.count = r.count;
+        	 return(true);     
+          }catch(IllegalArgumentException e) {
+        	  System.out.println(e);
+           return(false);
+          }
+      }
 	
 	public String getVersion() {
 		return version;
@@ -170,5 +195,17 @@ public class Events {
 	public String getTimeZone() {
 		return timeZone;
 	}
+   
+        public String getFrequency(){	
+        	return frequency;
+        }
+        
+        public String getFCount(){ 
+        	return count;
+        }
+        
+        public String getFString(){ 
+        	return r.getString();
+        }
 
 }
