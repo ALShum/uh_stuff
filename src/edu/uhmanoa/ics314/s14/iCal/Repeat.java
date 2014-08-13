@@ -19,9 +19,11 @@ import java.util.Arrays;
  * Day of week: A list of valid days: Sunday thru monday.  
  * 				If not specified this class will assume Monday to Friday.
  * 
- * @author Alex Shum
+ * 
+ * Modified by Katrina Schenk
  */
 public class Repeat {
+	//private Freq f;
 	public String f = "Every Weekday (Monday to Friday)";
 	private int interval = -1;
 	public String count = "0";
@@ -49,11 +51,11 @@ public class Repeat {
 	 * @throws IllegalArgumentException If count is less than 0.
 	 */
 	public Repeat(String f, String count) throws IllegalArgumentException {
-          if(Integer.parseInt(count2) < 0) {
+          if(Integer.parseInt(count) < 0) {
              throw new IllegalArgumentException("This is not a valid count");
           } else {
 		this.f = f;
-		this.count = count2;
+		this.count = count;
           }
 	}
 	

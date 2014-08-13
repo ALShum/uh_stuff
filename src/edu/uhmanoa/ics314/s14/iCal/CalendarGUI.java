@@ -252,7 +252,7 @@ public class CalendarGUI extends JApplet implements ActionListener{
                 if(ae.getSource() == this.occurrences){				 
                		int index = frequencyDrop.getSelectedIndex();
         	        String selected = frequency[index];
-        		repDone = e.eRepeating(selected, occurrences.getText());
+        		boolean repDone = e.eRepeating(selected, occurrences.getText());
         		if(!repDone){
         		 invalidMessage(occurrences, label9, "Occurrences");
         		} else {
